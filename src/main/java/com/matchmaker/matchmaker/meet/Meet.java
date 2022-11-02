@@ -16,7 +16,8 @@ public class Meet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private LocalDateTime dateAndTime;
+    private String date;
+    private String time;
     @ManyToOne()
     private Game game;
     @ManyToMany(mappedBy = "meet")

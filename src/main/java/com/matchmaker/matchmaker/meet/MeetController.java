@@ -9,25 +9,26 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/meet")
 public class MeetController {
-    private final MeetService meetService;
+    private final MeetServiceImplementation meetServiceImplementation;
 
     @GetMapping("/")
-    public List<MeetDTO> getMeets(){
-        return meetService.getMeets();
+    public List<Meet> getMeets() {
+        return meetServiceImplementation.getMeets();
     }
 
     @GetMapping("/{id}")
-    public MeetDTO getMeet(@PathVariable(name = "id") Long id){
-        return meetService.getMeetById(id);
+    public Meet getMeet(@PathVariable(name = "id") Long id) {
+        return meetServiceImplementation.getMeetById(id);
     }
 
     @PutMapping("/")
-    public void putMeet (@RequestBody MeetDTO meetDTO){
-        meetService.createMeet(meetDTO);
+    public void putMeet(@RequestBody Meet meetRequest) {
+        meetServiceImplementation.createMeet(meetRequest);
     }
+
     @DeleteMapping("/{id}")
-    public void deleteMeet (@PathVariable(name = "id") Long id){
-        meetService.deleteMeetById(id);
+    public void deleteMeet(@PathVariable(name = "id") Long id) {
+        meetServiceImplementation.deleteMeetById(id);
     }
 
 }

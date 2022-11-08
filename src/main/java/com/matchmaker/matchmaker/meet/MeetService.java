@@ -8,4 +8,5 @@ public interface MeetService {
     public Meet getMeetById(Long id);
     public void deleteMeetById(Long id);
     public void createMeet(Meet meetRequest);
+
 }

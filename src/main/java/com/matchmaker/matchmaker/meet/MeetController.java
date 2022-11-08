@@ -9,6 +9,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/meet")
 public class MeetController {
+    //service injection
     private final MeetServiceImplementation meetServiceImplementation;
 
     @GetMapping("/")
@@ -17,13 +18,18 @@ public class MeetController {
     }
 
     @GetMapping("/{id}")
-    public Meet getMeet(@PathVariable(name = "id") Long id) {
+    public Meet getMeet(@PathVariable(name = "id") Long id) throws Exception {
         return meetServiceImplementation.getMeetById(id);
     }
 
-    @PutMapping("/")
-    public void putMeet(@RequestBody Meet meetRequest) {
+    @PostMapping("/")
+    public void postMeet(@RequestBody Meet meetRequest){
         meetServiceImplementation.createMeet(meetRequest);
+    }
+
+    @PutMapping("/")
+    public void putMeet(@RequestBody Meet newMeetRequest, @PathVariable Long id) {
+        meetServiceImplementation.updateMeet(newMeetRequest,id);
     }
 
     @DeleteMapping("/{id}")

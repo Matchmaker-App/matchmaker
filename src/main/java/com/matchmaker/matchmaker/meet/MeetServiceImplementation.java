@@ -9,16 +9,16 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class MeetServiceImplementation {
+    //Repo injection
     private final MeetRepository meetRepository;
 
 
-    public List<Meet> getMeets(){
-        return null;
-
+    public List<Meet> getMeets() {
+        return meetRepository.findAll();
     }
 
-    public Meet getMeetById(Long id) {
-        return null;
+    public Meet getMeetById(Long id) throws Exception {
+        return meetRepository.findById(id).orElseThrow(() -> new Exception("Not found."));
 
     }
 
@@ -26,12 +26,33 @@ public class MeetServiceImplementation {
         meetRepository.deleteById(id);
     }
 
-    public void createMeet(Meet meet) {
-
-
+    public void createMeet(Meet meetRequest) {
+        Meet meet = new Meet();
+        meet.setDate(meetRequest.getDate());
+        meet.setTime(meetRequest.getTime());
+        meet.setAviability(meetRequest.isAviability());
+        meet.setGame(meetRequest.getGame());
+        //Todo adding users
+        //meet.setUsersReady();
+        meetRepository.save(meet);
     }
 
+    public void updateMeet(Meet newMeetRequest, Long id) {
+        meetRepository.findById(id).map(
+                meet -> {
+                    meet.setDate(newMeetRequest.getDate());
+                    meet.setTime(newMeetRequest.getTime());
+                    //Todo: adding users
+                    return meetRepository.save(meet);
+                }
+        );
+    }
 
+    //Todo removing users from existing meet
+
+    //    public void removeUserFromMeet(Long meetId,Long userId) throws Exception{
+    //        Meet meet = meetRepository.findById(userId).orElseThrow(() -> new Exception("Not found."));
+    //    }
 
 
 }

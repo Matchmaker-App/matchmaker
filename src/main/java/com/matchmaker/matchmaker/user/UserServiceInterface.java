@@ -7,6 +7,6 @@ public interface UserServiceInterface {
     UserDTO getUserById(Long id);
     List<UserDTO> getAllUser();
     UserDTO createUser(UserRequestDTO user);
-    UserDTO updateUserById(Long id, UserDTO updateInformation);
+    UserDTO updateUserById(Long id, UserRequestDTO updateInformation);
     void deleteUserById(Long id);
 }

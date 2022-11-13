@@ -41,7 +41,7 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public UserDTO updateUserById(Long id, UserDTO updateInformation) {
+    public UserDTO updateUserById(Long id, UserRequestDTO updateInformation) {
         Optional<User> searchedUserOptional = userRepository.findById(id);
         if(searchedUserOptional.isPresent()){
             User user = searchedUserOptional.get();

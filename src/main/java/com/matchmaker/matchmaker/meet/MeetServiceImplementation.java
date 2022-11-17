@@ -32,8 +32,8 @@ public class MeetServiceImplementation {
         meet.setTime(meetRequest.getTime());
         meet.setAviability(meetRequest.isAviability());
         meet.setGame(meetRequest.getGame());
-        //Todo adding users
-        //meet.setUsersReady();
+        //Todo adding user
+        //meet.setUsersReady().add();
         meetRepository.save(meet);
     }
 
@@ -42,17 +42,22 @@ public class MeetServiceImplementation {
                 meet -> {
                     meet.setDate(newMeetRequest.getDate());
                     meet.setTime(newMeetRequest.getTime());
-                    //Todo: adding users
+                    //Todo adding currently logged in user
+                    meet.getUsersReady().add();
                     return meetRepository.save(meet);
                 }
         );
     }
+    //Todo adding logged in user to existing meet
+    public void removeUserFromMeet(Long meetId,Long userId) throws Exception{
+        Meet meet = meetRepository.findById(meetId).orElseThrow(() -> new Exception("Not found.")).getUsersReady().add();
 
-    //Todo removing users from existing meet
+    }
+    //Todo removing logged in user from existing meet
+        public void removeUserFromMeet(Long meetId,Long userId) throws Exception{
+            Meet meet = meetRepository.findById(meetId).orElseThrow(() -> new Exception("Not found.")).getUsersReady().remove();
 
-    //    public void removeUserFromMeet(Long meetId,Long userId) throws Exception{
-    //        Meet meet = meetRepository.findById(userId).orElseThrow(() -> new Exception("Not found."));
-    //    }
+        }
 
 
 }

@@ -1,5 +1,7 @@
 package com.matchmaker.matchmaker.meet;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +15,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+@Table(name = "meets")
 public class Meet {
 
     @Id
@@ -29,19 +32,11 @@ public class Meet {
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     private Game game;
 
-    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "meet")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+    @JoinTable(name = "meet_users",
+            joinColumns = @JoinColumn(name = "meets_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> usersReady = new HashSet<User>();
 
-//    Not sure if this works as expected
-//
-//    private void addUser(User user){
-//        this.usersReady.add(user);
-//        user.getMeets().add(this);
-//    }
-//
-//    private void removeUser(User user){
-//        this.usersReady.remove(user);
-//        user.getMeets().remove(this);
-//    }
 
 }

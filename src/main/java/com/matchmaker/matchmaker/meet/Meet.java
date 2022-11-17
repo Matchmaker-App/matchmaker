@@ -32,11 +32,13 @@ public class Meet {
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     private Game game;
 
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinTable(name = "meet_users",
             joinColumns = @JoinColumn(name = "meets_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> usersReady = new HashSet<User>();
+
 
 
 }

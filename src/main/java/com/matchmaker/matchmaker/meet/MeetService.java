@@ -1,5 +1,7 @@
 package com.matchmaker.matchmaker.meet;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 public interface MeetService {

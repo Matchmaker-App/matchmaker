@@ -23,19 +23,19 @@ public class MeetController {
         return meetServiceImplementation.getMeetById(id);
     }
 
-    @PostMapping("/")
-    public void postMeet(@RequestBody Meet meetRequest){
-        meetServiceImplementation.createMeet(meetRequest);
-    }
-
-    @PutMapping("/")
-    public void putMeet(@RequestBody Meet newMeetRequest, @PathVariable Long id) {
-        meetServiceImplementation.updateMeet(newMeetRequest,id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteMeet(@PathVariable(name = "id") Long id) {
-        meetServiceImplementation.deleteMeetById(id);
-    }
-
+//    @PostMapping("/")
+//    public void postMeet(@RequestBody Meet meetRequest){
+//        meetServiceImplementation.createMeet(meetRequest);
+//    }
+//
+//    @PutMapping("/")
+//    public void putMeet(@RequestBody Meet newMeetRequest, @PathVariable Long id) {
+//        meetServiceImplementation.updateMeet(newMeetRequest,id);
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public void deleteMeet(@PathVariable(name = "id") Long id) {
+//        meetServiceImplementation.deleteMeetById(id);
+//    }
+//
 }

@@ -28,16 +28,16 @@ public class Meet {
     private String time;
     private boolean aviability;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id", referencedColumnName = "id")
-    private Game game;
-
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-    @JoinTable(name = "meet_users",
-            joinColumns = @JoinColumn(name = "meets_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> usersReady = new HashSet<User>();
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "game_id", referencedColumnName = "id")
+//   // private Game game;
+//
+//
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+//    @JoinTable(name = "meet_users",
+//            joinColumns = @JoinColumn(name = "meets_id"),
+//            inverseJoinColumns = @JoinColumn(name = "user_id"))
+//    private Set<User> usersReady = new HashSet<User>();
 
 
 

@@ -18,7 +18,7 @@ public class GameController {
 
     @GetMapping("/games")
     public @ResponseBody
-    ResponseEntity<List<GameModel>> getGame(@PathVariable(required = false, name="gameId") Long id,
+    ResponseEntity<List<Game>> getGame(@PathVariable(required = false, name="gameId") Long id,
                                        @PathVariable(required = false, name="name") String name,
                                        @PathVariable(required = false, name="rating") Double rating,
                                        @PathVariable(required = false, name="description") String description,
@@ -26,21 +26,21 @@ public class GameController {
         if(id == null && name == null && rating == null && description == null && platform == null){
             return new ResponseEntity<>(gameService.getGame(), HttpStatus.OK);
         }
-        GameModel gameModel = gameService.getGameById(id);
-        return new ResponseEntity(gameModel, HttpStatus.OK);
+        Game game = gameService.getGameById(id);
+        return new ResponseEntity(game, HttpStatus.OK);
     }
 
     @PostMapping("/games/addGame")
-    public ResponseEntity addGame(@RequestBody GameModel gameModel){
-        gameService.addGame(gameModel);
-        return ResponseEntity.ok(gameModel);
+    public ResponseEntity addGame(@RequestBody Game game){
+        gameService.addGame(game);
+        return ResponseEntity.ok(game);
     }
 
 
     @PutMapping("/games/editGame")
-    public ResponseEntity editGame(@RequestBody GameModel gameModel){
-        gameService.editGame(gameModel);
-        return ResponseEntity.ok(gameModel);
+    public ResponseEntity editGame(@RequestBody Game game){
+        gameService.editGame(game);
+        return ResponseEntity.ok(game);
     }
 
     @DeleteMapping("/games/deleteGame")

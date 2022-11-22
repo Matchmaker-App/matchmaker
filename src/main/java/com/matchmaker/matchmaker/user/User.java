@@ -1,18 +1,18 @@
 package com.matchmaker.matchmaker.user;
 
+import com.matchmaker.matchmaker.meet.Meet;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
 @Builder
+@Table(name = "user")
 public class User {
 
     @Id
@@ -25,5 +25,7 @@ public class User {
     private String lastName;
     private LocalDate birthDay;
 
+    @OneToMany
+    private Set<Meet> meets;
 
 }

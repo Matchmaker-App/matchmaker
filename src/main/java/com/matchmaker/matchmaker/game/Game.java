@@ -9,19 +9,19 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "games")
+@Table(name = "game")
 public class Game {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "game_id")
-        private Long id;
-        private String name;
-        private Double rating;
-        private String description;
-        private String platform;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "game_id")
+    private Long id;
+    private String name;
+    private Double rating;
+    private String description;
+    private String platform;
 
-    @OneToMany(mappedBy = "meets")
+    @OneToMany
     @JsonIgnore
     private List<Meet> meets;
 

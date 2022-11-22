@@ -2,12 +2,13 @@ package com.matchmaker.matchmaker.meet;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.matchmaker.matchmaker.game.Game;
+import com.matchmaker.matchmaker.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,29 +17,24 @@ import java.util.Set;
 @AllArgsConstructor
 @Data
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-@Table(name = "meets")
+@Table(name = "meet")
 public class Meet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
 
     private String date;
     private String time;
     private boolean aviability;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "game_id", referencedColumnName = "id")
-//   // private Game game;
-//
-//
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-//    @JoinTable(name = "meet_users",
-//            joinColumns = @JoinColumn(name = "meets_id"),
-//            inverseJoinColumns = @JoinColumn(name = "user_id"))
-//    private Set<User> usersReady = new HashSet<User>();
+    @ManyToOne
+    @JoinColumn(name = "game_id", referencedColumnName = "game_id")
+    private Game game;
 
+    @OneToMany
+    private Set<User> users = new HashSet<User>();
 
-
+    @ManyToOne
+    private  User creatorUser;
 }

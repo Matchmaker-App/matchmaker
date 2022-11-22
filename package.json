@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@chakra-ui/react": "^2.4.1",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.15",
+    "@mui/material": "^5.10.15",
+    "axios": "^1.2.0",
+    "framer-motion": "^7.6.9",
+    "react-router-dom": "^6.4.3",
+    "web-vitals": "^3.1.0"
+  }
+}

@@ -14,25 +14,25 @@ public class GameService {
         this.gameRepository = gameRepository;
     }
 
-    public void addGame(GameModel gameModel){
-        gameRepository.save(gameModel);
-        log.info("Dodano grę: " + gameModel.getId());
+    public void addGame(Game game){
+        gameRepository.save(game);
+        log.info("The game have been added: " + game.getId());
     }
 
-    public void editGame(GameModel gameModel){
-        gameRepository.save(gameModel);
+    public void editGame(Game game){
+        gameRepository.save(game);
     }
 
     public void deleteGameById(Long id){
         gameRepository.deleteById(id);
-        log.info("Usunięto grę o id" + id);
+        log.info("The game with id: " + id + " have been added.");
     }
 
-    public GameModel getGameById(Long id){
+    public Game getGameById(Long id){
         return gameRepository.findById(id).orElse(null);
     }
 
-    public List<GameModel> getGame(){
+    public List<Game> getGame(){
         return gameRepository.findAll();
     }
 }

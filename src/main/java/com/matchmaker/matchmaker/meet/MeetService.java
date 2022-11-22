@@ -7,6 +7,6 @@ public interface MeetService {
     public List<Meet> getMeets();
     public Meet getMeetById(Long id);
     public void deleteMeetById(Long id);
-    public void createMeet(Meet meetRequest);
+    public void createMeet(Meet meetRequest,Long userId,Long gameId);
 
 }

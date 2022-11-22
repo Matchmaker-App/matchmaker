@@ -24,11 +24,11 @@ public class MeetController {
     }
 
     @PostMapping("/")
-    public void postMeet(@RequestBody Meet meetRequest){
-        meetServiceImplementation.createMeet(meetRequest);
+    public void postMeet(@RequestBody Meet meetRequest,@RequestParam String gameId,@RequestParam String userId) throws Exception {
+        meetServiceImplementation.createMeet(meetRequest,Long.valueOf(gameId),Long.valueOf(userId));
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public void putMeet(@RequestBody Meet newMeetRequest, @PathVariable Long id) {
         meetServiceImplementation.updateMeet(newMeetRequest,id);
     }

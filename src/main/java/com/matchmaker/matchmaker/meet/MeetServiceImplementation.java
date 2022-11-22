@@ -1,5 +1,8 @@
 package com.matchmaker.matchmaker.meet;
 
+import com.matchmaker.matchmaker.game.GameRepository;
+import com.matchmaker.matchmaker.user.User;
+import com.matchmaker.matchmaker.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +14,9 @@ import java.util.stream.Collectors;
 public class MeetServiceImplementation {
     //Repo injection
     private final MeetRepository meetRepository;
+    private final GameRepository gameRepository;
+    private final UserRepository userRepository;
+
 
 
     public List<Meet> getMeets() {
@@ -26,14 +32,14 @@ public class MeetServiceImplementation {
         meetRepository.deleteById(id);
     }
 
-    public void createMeet(Meet meetRequest) {
+    public void createMeet(Meet meetRequest,Long userId,Long gameId) throws Exception {
         Meet meet = new Meet();
         meet.setDate(meetRequest.getDate());
         meet.setTime(meetRequest.getTime());
         meet.setAviability(meetRequest.isAviability());
-        meet.setGame(meetRequest.getGame());
-        //Todo adding user
-        //meet.setUsersReady().add();
+        meet.setGame(gameRepository.findById(gameId).orElseThrow(()->new Exception("Not found.")));
+        //Todo adding currently logged in user to existing meet with authentication
+        meet.getUsersReady().add(userRepository.findById(userId).orElseThrow(()->new Exception("Not found.")));
         meetRepository.save(meet);
     }
 
@@ -42,21 +48,22 @@ public class MeetServiceImplementation {
                 meet -> {
                     meet.setDate(newMeetRequest.getDate());
                     meet.setTime(newMeetRequest.getTime());
-                    //Todo adding currently logged in user
-                    meet.getUsersReady().add();
                     return meetRepository.save(meet);
                 }
         );
     }
-    //Todo adding logged in user to existing meet
-    public void removeUserFromMeet(Long meetId,Long userId) throws Exception{
-        Meet meet = meetRepository.findById(meetId).orElseThrow(() -> new Exception("Not found.")).getUsersReady().add();
+    //Todo adding currently logged in user to existing meet with authentication
+    public void addUserToMeet(Long meetId,Long userId) throws Exception{
+        Meet meet = meetRepository.findById(meetId).orElseThrow(() -> new Exception("Not found."));
+        meet.getUsersReady().add(userRepository.findById(userId).orElseThrow(()->new Exception("Not found.")));
+        meetRepository.save(meet);
 
     }
-    //Todo removing logged in user from existing meet
+    //Todo removing currently logged in user from existing meet with authentication
         public void removeUserFromMeet(Long meetId,Long userId) throws Exception{
-            Meet meet = meetRepository.findById(meetId).orElseThrow(() -> new Exception("Not found.")).getUsersReady().remove();
-
+            Meet meet = meetRepository.findById(meetId).orElseThrow(() -> new Exception("Not found."));
+            meet.getUsersReady().remove(userRepository.findById(userId).orElseThrow(()->new Exception("Not found.")));
+            meetRepository.save(meet);
         }
 
 

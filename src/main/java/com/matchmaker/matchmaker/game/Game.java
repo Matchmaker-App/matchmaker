@@ -21,7 +21,7 @@ public class Game {
     private String description;
     private String platform;
 
-    @OneToMany
+    @OneToMany(mappedBy = "game")
     @JsonIgnore
     private List<Meet> meets;
 

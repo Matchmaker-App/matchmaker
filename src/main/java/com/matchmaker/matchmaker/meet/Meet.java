@@ -29,12 +29,12 @@ public class Meet {
     private boolean aviability;
 
     @ManyToOne
-    @JoinColumn(name = "game_id", referencedColumnName = "game_id")
     private Game game;
 
-    @OneToMany
+    @ManyToMany
     private Set<User> users = new HashSet<User>();
 
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "creator_user_id", referencedColumnName = "user_id")
     private  User creatorUser;
 }

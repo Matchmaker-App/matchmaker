@@ -9,10 +9,11 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Builder
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -26,7 +27,7 @@ public class User {
     private String lastName;
     private LocalDate birthDay;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "users")
     private Set<Meet> meets;
 
 }

@@ -23,19 +23,28 @@ public class MeetController {
         return meetServiceImplementation.getMeetById(id);
     }
 
-//    @PostMapping("/")
-//    public void postMeet(@RequestBody Meet meetRequest){
-//        meetServiceImplementation.createMeet(meetRequest);
-//    }
-//
-//    @PutMapping("/")
-//    public void putMeet(@RequestBody Meet newMeetRequest, @PathVariable Long id) {
-//        meetServiceImplementation.updateMeet(newMeetRequest,id);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteMeet(@PathVariable(name = "id") Long id) {
-//        meetServiceImplementation.deleteMeetById(id);
-//    }
-//
+    @PostMapping("/")
+    public void postMeet(@RequestBody Meet meetRequest,@RequestParam Long userId,@RequestParam Long gameId) throws Exception {
+        meetServiceImplementation.createMeet(meetRequest,userId,gameId);
+    }
+
+    @PutMapping("/")
+    public void putMeet(@RequestBody Meet newMeetRequest, @PathVariable Long id) {
+        meetServiceImplementation.updateMeet(newMeetRequest,id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteMeet(@PathVariable(name = "id") Long id) {
+        meetServiceImplementation.deleteMeetById(id);
+    }
+
+    @PutMapping("/{meetId}/users/{userId}")
+    public void addUserToMeet(@PathVariable Long meetId,@PathVariable Long userId) throws Exception {
+        meetServiceImplementation.addUserToMeet(meetId,userId);
+    }
+
+    @DeleteMapping("/{meetId}/users/{userId}")
+    public void removeUserFromMeet(@PathVariable Long meetId,@PathVariable Long userId) throws Exception {
+        meetServiceImplementation.removeUserFromMeet(meetId,userId);
+    }
 }

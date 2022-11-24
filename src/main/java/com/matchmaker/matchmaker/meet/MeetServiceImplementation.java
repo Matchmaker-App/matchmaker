@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,11 +38,19 @@ public class MeetServiceImplementation {
         meet.setDate(meetRequest.getDate());
         meet.setTime(meetRequest.getTime());
         meet.setAviability(meetRequest.isAviability());
-        meet.setGame(gameRepository.findById(gameId).orElseThrow(()->new Exception("Not found.")));
+        meet.setGame(gameRepository.findById(gameId).orElseThrow(()->new Exception("Game not found.")));
         //Todo adding currently logged in user to existing meet with authentication
-        meet.getUsers().add(userRepository.findById(userId).orElseThrow(()->new Exception("Not found.")));
+        meet.getUsers().add(userRepository.findById(userId).orElseThrow(()->new Exception("User not found.")));
+        meet.setCreatorUser(userRepository.findById(userId).orElseThrow(()->new Exception("User not found.")));
         meetRepository.save(meet);
+        System.out.println(userRepository.findById(userId).orElseThrow().getMeets());
+        userRepository.findById(userId).orElseThrow(()->new Exception("User not found.")).
+                getMeets().add(meetRepository.findById(meet.getId()).orElseThrow(()->new Exception("Meet not found.")));
+
+
+
     }
+
 
     public void updateMeet(Meet newMeetRequest, Long id) {
         meetRepository.findById(id).map(
@@ -54,15 +63,15 @@ public class MeetServiceImplementation {
     }
     //Todo adding currently logged in user to existing meet with authentication
     public void addUserToMeet(Long meetId,Long userId) throws Exception{
-        Meet meet = meetRepository.findById(meetId).orElseThrow(() -> new Exception("Not found."));
-        meet.getUsers().add(userRepository.findById(userId).orElseThrow(()->new Exception("Not found.")));
+        Meet meet = meetRepository.findById(meetId).orElseThrow(() -> new Exception("Meet not found."));
+        meet.getUsers().add(userRepository.findById(userId).orElseThrow(()->new Exception("User not found.")));
         meetRepository.save(meet);
 
     }
     //Todo removing currently logged in user from existing meet with authentication
         public void removeUserFromMeet(Long meetId,Long userId) throws Exception{
-            Meet meet = meetRepository.findById(meetId).orElseThrow(() -> new Exception("Not found."));
-            meet.getUsers().remove(userRepository.findById(userId).orElseThrow(()->new Exception("Not found.")));
+            Meet meet = meetRepository.findById(meetId).orElseThrow(() -> new Exception("Meet not found."));
+            meet.getUsers().remove(userRepository.findById(userId).orElseThrow(()->new Exception("User not found.")));
             meetRepository.save(meet);
         }
 

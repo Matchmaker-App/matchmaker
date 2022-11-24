@@ -8,8 +8,13 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
-@Table(name = "game")
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
+@Table(name = "games")
 public class Game {
 
     @Id

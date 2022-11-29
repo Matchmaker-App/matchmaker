@@ -8,20 +8,26 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
 @Table(name = "games")
 public class Game {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "game_id")
-        private Long id;
-        private String name;
-        private Double rating;
-        private String description;
-        private String platform;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "game_id")
+    private Long id;
+    private String name;
+    private String genre;
+    private String description;
+    private String platform;
 
-    @OneToMany(mappedBy = "meets")
+
+    @OneToMany(mappedBy = "game")
     @JsonIgnore
     private List<Meet> meets;
 

@@ -2,20 +2,24 @@ package com.matchmaker.matchmaker.user;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+//@RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/{id}")
-    public UserDTO getUser(@PathVariable(name = "id") Long id) {
-        return userService.getUserById(id);
+    @GetMapping("/user")
+    public String getUser(/*@PathVariable(name = "id") Long id */) {
+        DefaultOidcUser user = (DefaultOidcUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return user.getEmail() + "<img alt='user' scr='"+ user.getProfile()+"'></img>";
+        //userService.getUserById(id);
     }
 
     @GetMapping("")

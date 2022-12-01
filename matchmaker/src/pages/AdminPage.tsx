@@ -1,14 +1,19 @@
 import {
   Button,
-  Center,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Heading,
   Input,
-  Stack,
+  Textarea,
+  useToast,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { GameDataApi } from "../api/GameDataApi";
+import { GameDataContext } from "../App";
+import { Wrapper } from "../components/Wrapper";
+import { Game } from "../models/game/Game";
+import { GameResponse } from "../models/game/GameResponse";
 
 interface GameData {
   name: string;
@@ -22,6 +27,9 @@ interface GameData {
 }
 
 export const AdminPage = () => {
+  const context = useContext(GameDataContext);
+  const toast = useToast();
+  const navigate = useNavigate();
   const [gameData, setGameData] = useState<GameData>({
     name: "",
     isNameValid: false,
@@ -73,55 +81,88 @@ export const AdminPage = () => {
     return gameData.description.length <= 300;
   };
 
+  const [requestGetGame, setRequestGetGame] = useState<Game[]>([]);
+
+  const fetchGameData = useCallback(async () => {
+    try {
+      const usages = await GameDataApi.getGame();
+      setRequestGetGame(usages.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchGameData();
+  }, []);
+
+  const [postGameData, setGame] = useState<GameResponse>();
+ 
+
+  const postGame = useCallback(async () => {
+    const postGameResult = await GameDataApi.postGame({
+      gameData: context.gameData,
+    });
+
+    setGame(postGameResult.data);
+
+    postGameResult.data.game.forEach((game) => {
+      
+    });
+
+  useEffect(() => {
+    postGame();
+  }, [postGame]);
+
   return (
-    <Center h="100vh" flexDirection={"column"}>
-      <Heading>Panel Administracyjny</Heading>
-      <Stack direction={"column"} bg="white" p={16}>
-        <FormControl isInvalid={!!gameData.name && !isNameValid()}>
-          <FormLabel>Dodaj Grę:</FormLabel>
-          <Input type="text" value={gameData.name} onChange={onNameChanged} />
-          <FormErrorMessage>Pole wymagane!</FormErrorMessage>
-        </FormControl>
+    <Wrapper heading="Panel Administracyjny">
+      <FormControl isInvalid={!!gameData.name && !isNameValid()}>
+        <FormLabel>Dodaj Grę:</FormLabel>
+        <Input type="text" value={gameData.name} onChange={onNameChanged} />
+        <FormErrorMessage>Pole wymagane!</FormErrorMessage>
+      </FormControl>
 
-        <FormControl isInvalid={!!gameData.genre && !isGenreValid()}>
-          <FormLabel>Dodaj Gatunek:</FormLabel>
-          <Input type="text" value={gameData.genre} onChange={onGenreChanged} />
-          <FormErrorMessage>Pole wymagane!</FormErrorMessage>
-        </FormControl>
+      {/* {!gameData.name&&<FormLabel>Dodaj Grę:</FormLabel>} */}
 
-        <FormControl isInvalid={!!gameData.platform && !isPlatformValid()}>
-          <FormLabel>Dodaj Platformę:</FormLabel>
-          <Input
-            type="text"
-            value={gameData.platform}
-            onChange={onPlatformChanged}
-          />
-          <FormErrorMessage>Pole wymagane!</FormErrorMessage>
-        </FormControl>
+      <FormControl isInvalid={!!gameData.genre && !isGenreValid()}>
+        <FormLabel>Dodaj Gatunek:</FormLabel>
+        <Input type="text" value={gameData.genre} onChange={onGenreChanged} />
+        <FormErrorMessage>Pole wymagane!</FormErrorMessage>
+      </FormControl>
 
-        <FormControl
-          isInvalid={!!gameData.description && !isDescriptionValid()}
-        >
-          <FormLabel>Dodaj Opis:</FormLabel>
-          <Input
-            type="text"
-            value={gameData.description}
-            onChange={onDescriptionChanged}
-          />
-          <FormErrorMessage>Pole wymagane!</FormErrorMessage>
-        </FormControl>
-        <Button
-          colorScheme="blue"
-          disabled={
-            !isNameValid() ||
-            !isGenreValid() ||
-            !isPlatformValid() ||
-            !isDescriptionValid()
-          }
-        >
-          Zatwierdź
-        </Button>
-      </Stack>
-    </Center>
+      <FormControl isInvalid={!!gameData.platform && !isPlatformValid()}>
+        <FormLabel>Dodaj Platformę:</FormLabel>
+        <Input
+          type="text"
+          value={gameData.platform}
+          onChange={onPlatformChanged}
+        />
+
+        <FormErrorMessage>Pole wymagane!</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={!!gameData.description && !isDescriptionValid()}>
+        <FormLabel>Dodaj Opis:</FormLabel>
+        <Input
+          type="textarea"
+          value={gameData.description}
+          onChange={onDescriptionChanged}
+        />
+        <Textarea placeholder="Opis..." />
+        <FormErrorMessage>Pole wymagane!</FormErrorMessage>
+      </FormControl>
+
+      <Button
+        colorScheme="blue"
+        disabled={
+          !isNameValid() ||
+          !isGenreValid() ||
+          !isPlatformValid() ||
+          !isDescriptionValid()
+        }
+      >
+        Zatwierdź
+      </Button>
+    </Wrapper>
   );
 };

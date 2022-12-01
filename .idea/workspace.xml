@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4120dffc-5810-49a6-92b2-1faa5af4267f" name="Changes" comment="game controllers commit">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="4120dffc-5810-49a6-92b2-1faa5af4267f" name="Changes" comment="project download from git, game model- double rating change on string genre, frontend adding game to database form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matchmaker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/matchmaker.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matchmaker/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/matchmaker/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matchmaker/src/api/GameDataApi.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matchmaker/src/components/GameInput.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matchmaker/src/models/Game.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matchmaker/src/models/GameData.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matchmaker/src/models/GameRequest.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matchmaker/src/pages/AdminPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/matchmaker/src/pages/AdminPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/game/GameModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/meet/Meet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/meet/Meet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/meet/MeetServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/meet/MeetServiceImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/User.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature-game-package" />
+        <entry key="$PROJECT_DIR$" value="feature-game-relations" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -110,6 +117,8 @@
       <workItem from="1668713345422" duration="116000" />
       <workItem from="1668713509275" duration="85000" />
       <workItem from="1668713620736" duration="298000" />
+      <workItem from="1669726111709" duration="4234000" />
+      <workItem from="1669907948146" duration="4326000" />
     </task>
     <task id="LOCAL-00001" summary="controllers commit">
       <created>1667068754969</created>
@@ -146,7 +155,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668713404299</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="project download from git, game model- double rating change on string genre, frontend adding game to database form">
+      <created>1669726408147</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669726408148</updated>
+    </task>
+    <task id="LOCAL-00007" summary="project download from git, game model- double rating change on string genre, frontend adding game to database form">
+      <created>1669727248227</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669727248227</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +190,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="controllers commit" />
     <MESSAGE value="game controllers commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="game controllers commit" />
+    <MESSAGE value="project download from git, game model- double rating change on string genre, frontend adding game to database form" />
+    <option name="LAST_COMMIT_MESSAGE" value="project download from git, game model- double rating change on string genre, frontend adding game to database form" />
   </component>
 </project>

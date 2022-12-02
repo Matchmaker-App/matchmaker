@@ -20,10 +20,10 @@ public class GameController {
     public @ResponseBody
     ResponseEntity<List<Game>> getGame(@PathVariable(required = false, name="gameId") Long id,
                                        @PathVariable(required = false, name="name") String name,
-                                       @PathVariable(required = false, name="rating") Double rating,
+                                       @PathVariable(required = false, name="genre") String genre,
                                        @PathVariable(required = false, name="description") String description,
                                        @PathVariable(required = false, name="platform") String platform) {
-        if(id == null && name == null && rating == null && description == null && platform == null){
+        if(id == null && name == null && genre == null && description == null && platform == null){
             return new ResponseEntity<>(gameService.getGame(), HttpStatus.OK);
         }
         Game game = gameService.getGameById(id);

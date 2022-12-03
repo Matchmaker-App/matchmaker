@@ -12,10 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class UserRequestDTO {
 
-    private String username;
+    private String name;
     private String password;
     private String email;
-    private String firstName;
-    private String lastName;
-    private LocalDate birthDay;
 }

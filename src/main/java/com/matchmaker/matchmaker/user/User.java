@@ -1,39 +1,38 @@
 package com.matchmaker.matchmaker.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matchmaker.matchmaker.meet.Meet;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.security.AuthProvider;
-import java.time.LocalDate;
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Builder
 @Table(name = "users")
 public class User {
 
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "user_id")
-    private Long id;
-    private String username;
-//    private String imageUrl;
-
-    @JsonIgnore
-    private String password;
+    private String id;
+    private String name;
     private String email;
-//    private AuthProvider provider;
-//    private String providerId;
-
-    private String firstName;
-    private String lastName;
-    private LocalDate birthDay;
+    private Boolean emailVerified = false;
+    private String imageUrl;
+    @JsonIgnore
+    private String password = null;
+    private AuthProvider provider;
+    private String providerId;
+//    private String firstName;
+//    private String lastName;
+//    private LocalDate birthDay;
 
     @ManyToMany(mappedBy = "users")
     private Set<Meet> meets;

@@ -1,25 +1,31 @@
 package com.matchmaker.matchmaker.user;
 
-import lombok.Getter;
+import com.matchmaker.matchmaker.exception.ResourceNotFoundException;
+import com.matchmaker.matchmaker.security.User;
+import com.matchmaker.matchmaker.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-//@RequestMapping("/user")
+@RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
-
     private final UserService userService;
+    private final UserRepository userRepository;
 
-    @GetMapping("/user")
-    public String getUser(/*@PathVariable(name = "id") Long id */) {
-        DefaultOidcUser user = (DefaultOidcUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return user.getEmail() + "<img alt='user' scr='"+ user.getProfile()+"'></img>";
-        //userService.getUserById(id);
+    @GetMapping("/profile")
+    @PreAuthorize("hasRole('USER')")
+    public com.matchmaker.matchmaker.user.User getCurrentUser(@User UserPrincipal userPrincipal){
+        return userRepository.findById(userPrincipal.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userPrincipal.getId()));
+    }
+
+    @GetMapping("/{id}")
+    public UserDTO getUser(@PathVariable(name = "id") String id) {
+        return userService.getUserById(Long.valueOf(id));
     }
 
     @GetMapping("")
@@ -33,12 +39,12 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable(name= "id") Long id){
-        userService.deleteUserById(id);
+    public void deleteUser(@PathVariable(name= "id") String id){
+        userService.deleteUserById(Long.valueOf(id));
     }
 
     @PatchMapping("/{id}")
-    public UserDTO updateUser(@PathVariable(name = "id") Long id, @RequestBody UserRequestDTO updateInformation){
-        return userService.updateUserById(id, updateInformation );
+    public UserDTO updateUser(@PathVariable(name = "id") String id, @RequestBody UserRequestDTO updateInformation){
+        return userService.updateUserById(Long.valueOf(id), updateInformation );
     }
 }

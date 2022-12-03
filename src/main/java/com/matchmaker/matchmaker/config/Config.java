@@ -4,7 +4,6 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +12,7 @@ import java.util.List;
 @Configuration
 @ConfigurationProperties(prefix = "app")
 public class Config {
-//    private List<String> authorizedRedirectUris = new ArrayList<>();
-//    private String token;
-//    private  long tokenExpiration;
-
+    private List<String> authorizedRedirectUris = new ArrayList<>();
+    private String tokenSecret;
+    private long tokenExpirationMsec;
 }

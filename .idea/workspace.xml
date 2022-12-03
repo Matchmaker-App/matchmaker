@@ -4,23 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4120dffc-5810-49a6-92b2-1faa5af4267f" name="Changes" comment="database relation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/config/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/config/CorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+    <list default="true" id="4120dffc-5810-49a6-92b2-1faa5af4267f" name="Changes" comment="Add google authentication">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/exception/BadRequestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/exception/OAuth2AuthenticationProcessingException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/RestAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/TokenAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/TokenProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/UserPrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/oauth/CustomOauth2UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/oauth/HttpCookieOAuth2AuthorizationRequestRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/oauth/OAuth2AuthenticationFailureHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/oauth/OAuth2AuthenticationSuccessHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/oauth/user/AuthUserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/oauth/user/AuthUserInfoFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/security/oauth/user/GoogleAuthUserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/AuthProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/util/CookieUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-local.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matchmaker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/matchmaker.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/meet/MeetServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/meet/MeetServiceImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/game/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/meet/Meet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/meet/Meet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/matchmaker/matchmaker/user/UserServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/meet/MeetServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/meet/MeetServiceImplementation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/User$UserBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserDTO$UserDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserDTO$UserDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserRequestDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserServiceInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/matchmaker/matchmaker/user/UserServiceInterface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,10 +66,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature-login" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -70,9 +98,19 @@
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75"
+    "RequestMappingsPanelWidth1": "75",
+    "last_opened_file_path": "D:/Dokumenty/AppGrupCodecool/matchmaker/src/main/resources"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Dokumenty\AppGrupCodecool\matchmaker\src\main\resources" />
+      <recent name="D:\Dokumenty\AppGrupCodecool\matchmaker\src\main\java\com\matchmaker\matchmaker" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.matchmaker.matchmaker.util" />
+    </key>
+  </component>
   <component name="RunManager" selected="Spring Boot.MatchmakerApplication (1)">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
@@ -173,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668713404299</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add google authentication">
+      <created>1669909669059</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669909669059</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +238,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="controllers commit" />
     <MESSAGE value="game controllers commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="game controllers commit" />
+    <MESSAGE value="Add google authentication" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add google authentication" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

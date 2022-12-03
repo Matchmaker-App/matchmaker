@@ -1,6 +1,10 @@
 package com.matchmaker.matchmaker.user;
 
+import com.matchmaker.matchmaker.exception.ResourceNotFoundException;
+import com.matchmaker.matchmaker.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -10,12 +14,27 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserServiceInterface {
-
     private final UserRepository userRepository;
 
     @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email:" + email));
+
+        return UserPrincipal.create(user);
+    }
+
+    @Override
+    public UserDetails loadUserById(String id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+
+        return UserPrincipal.create(user);
+    }
+
+    @Override
     public UserDTO getUserById(Long id) {
-        return UserDTO.dateTransferUser(userRepository.findById(id).orElseThrow());
+        return UserDTO.dateTransferUser(userRepository.findById(String.valueOf(id)).orElseThrow());
     }
 
     @Override
@@ -29,12 +48,9 @@ public class UserService implements UserServiceInterface {
     @Override
     public UserDTO createUser(UserRequestDTO userCreate) {
         User user = User.builder()
-                .username(userCreate.getUsername())
+                .name(userCreate.getName())
                 .password(userCreate.getPassword())
                 .email(userCreate.getEmail())
-                .firstName(userCreate.getFirstName())
-                .lastName(userCreate.getLastName())
-                .birthDay(userCreate.getBirthDay())
                 .build();
 
         return UserDTO.dateTransferUser(userRepository.save(user));
@@ -42,11 +58,11 @@ public class UserService implements UserServiceInterface {
 
     @Override
     public UserDTO updateUserById(Long id, UserRequestDTO updateInformation) {
-        Optional<User> searchedUserOptional = userRepository.findById(id);
+        Optional<User> searchedUserOptional = userRepository.findById(String.valueOf(id));
         if(searchedUserOptional.isPresent()){
             User user = searchedUserOptional.get();
 
-            user.setUsername(updateInformation.getUsername());
+            user.setName(updateInformation.getName());
             user.setEmail(updateInformation.getEmail());
             user.setPassword(updateInformation.getPassword());
 
@@ -57,6 +73,6 @@ public class UserService implements UserServiceInterface {
 
     @Override
     public void deleteUserById(Long id) {
-        userRepository.deleteById(id);
+        userRepository.deleteById(String.valueOf(id));
     }
 }

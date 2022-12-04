@@ -1,0 +1,9 @@
+.logo{
+    margin:auto;
+   margin-top: -130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+width: 75%;
+height: 75%;
+}

@@ -1,0 +1,32 @@
+.loginpage-container{
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+
+}
+
+.loginpage-container-second{
+    margin-top: 40px;
+    display: flex;
+    
+    height: 200px;
+    width: 400px;
+    
+    justify-content: center;
+    background-color: #586ae6;;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px #2b2354;
+
+    /* font-size:60px;
+    display: flex;
+    flex-direction: row;
+    background-color: #586ae6;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-family:  'Orbitron';
+    color: #242e36;
+    box-shadow: 5px 5px 5px 5px #2b2354; */
+    
+    cursor: pointer;
+}

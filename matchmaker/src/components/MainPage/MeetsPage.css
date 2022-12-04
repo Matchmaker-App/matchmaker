@@ -1,0 +1,82 @@
+.mainpage-container{
+  
+    
+    font-size: 14px;
+}
+
+.meetspage-meets{
+    font-size: 14px;
+    
+}
+
+.meetspage-meets ul{
+    
+   list-style:none;
+   font-family:  'Orbitron';
+   padding: 10px;
+}
+.label{
+    border-color: #ad53da;
+    border-radius: 4px;
+
+}
+.meetspage-meets li{
+    
+    display: inline-block;
+    margin: auto;
+    padding: 10px;
+}
+
+.meet-container{
+    width: 270px;
+    height: 220px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #586ae6;
+    color: #2b2354;
+    box-shadow: 5px 5px 5px #2b2354;
+}
+.meet-button{
+    
+    align-items: center;
+    justify-content: center;
+    vertical-align:middle ;
+    background-color: #2b2354;
+    border: none;
+    border-radius: 5px;
+    width: 65px;
+    height: 45px;
+
+}
+
+
+.meet-button:hover,
+.meet-button:focus{
+    
+    
+    box-shadow: inset 0 0 0 3em #ad53da;
+    transition: 0.8s;
+    
+}
+
+.meet-icon{
+
+    cursor: pointer;
+    color: #2b2354;
+    border: none;
+    
+}
+
+.meet-aviability{
+  
+}
+
+.meet-button{
+    margin-left: 190px;
+    border-radius: 25px;
+    border-color: #2b2354;
+    border-style: solid;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+}

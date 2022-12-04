@@ -1,0 +1,49 @@
+.meetformpage-container{
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    
+    background-color: #586ae6;
+    box-shadow: 5px 5px 5px 5px #2b2354;
+    border-radius: 13px;
+    margin: auto;
+    width: 20%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-family:  'Orbitron';
+}
+.meet-form-list{
+    width: 200px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: #2b2354;
+    list-style: none;
+    font-family:  'Orbitron';
+}
+.meetformpage-title{
+    
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    
+    font-family:  'Orbitron';
+}
+.meet-form-button{
+    
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: #2b2354;
+    font-family:  'Orbitron';
+}
+.meet-form-list li{
+    width: 160px;
+}
+
+.date-input{
+    
+}

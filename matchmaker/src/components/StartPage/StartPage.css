@@ -1,0 +1,61 @@
+.startpage-container{
+    display: flex;
+    flex-direction: row;
+    font-size: 55px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.startpage-left-side{
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.startpage-right-side{
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.startpage-create-meet{
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    height: 300px;
+    color: #c651e6;
+    width: 400px;
+    font-family:  'Orbitron';
+}
+.startpage-create-meet:hover,
+.startpage-create-meet:focus{
+
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 6em #586ae6;
+
+    transition: 0.8s;
+}
+
+.startpage-join-meet{
+    
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    height: 300px;
+    color: #72c9f4;
+    width: 400px;
+    font-family:  'Orbitron';
+}
+
+.startpage-join-meet:hover,
+.startpage-join-meet:focus{
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 6em #586ae6;
+
+    transition: 0.8s;
+}

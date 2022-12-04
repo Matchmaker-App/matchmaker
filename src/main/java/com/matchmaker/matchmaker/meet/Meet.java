@@ -22,10 +22,12 @@ public class Meet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "meet_id")
+
     private Long id;
 
     private String date;
     private String time;
+    private int numberOfPlayers;
     private boolean aviability;
 
     @ManyToOne

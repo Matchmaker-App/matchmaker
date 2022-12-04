@@ -20,8 +20,11 @@ public class MeetServiceImplementation {
 
 
 
-    public List<Meet> getMeets() {
-        return meetRepository.findAll();
+    public List<MeetDTO> getMeets() {
+        List<Meet> meets = meetRepository.findAll();
+        return meets.stream().map((meet) -> convertEntityToDto(meet))
+                .collect(Collectors.toList());
+//        return meetRepository.findAll();
     }
 
     public Meet getMeetById(Long id) throws Exception {
@@ -41,6 +44,7 @@ public class MeetServiceImplementation {
         meet.setGame(gameRepository.findById(gameId).orElseThrow(()->new Exception("Game not found.")));
         //Todo adding currently logged in user to existing meet with authentication
         meet.getUsers().add(userRepository.findById(userId).orElseThrow(()->new Exception("User not found.")));
+        meet.setNumberOfPlayers(meetRequest.getNumberOfPlayers());
         meet.setCreatorUser(userRepository.findById(userId).orElseThrow(()->new Exception("User not found.")));
         meetRepository.save(meet);
         System.out.println(userRepository.findById(userId).orElseThrow().getMeets());
@@ -75,5 +79,15 @@ public class MeetServiceImplementation {
             meetRepository.save(meet);
         }
 
+    private MeetDTO convertEntityToDto(Meet meet){
+        MeetDTO meetDTO = new MeetDTO();
+        meetDTO.setId(meet.getId());
+        meetDTO.setDate(meet.getDate());
+        meetDTO.setTime(meet.getTime());
+        meetDTO.setAviability(meet.isAviability());
+        meetDTO.setGame(meet.getGame().getName());
+        meetDTO.setNumberOfPlayers(meet.getNumberOfPlayers());
+        return meetDTO;
+    }
 
 }

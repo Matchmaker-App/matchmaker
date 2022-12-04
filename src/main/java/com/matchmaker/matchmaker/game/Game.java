@@ -22,8 +22,7 @@ public class Game {
     @Column(name = "game_id")
     private Long id;
     private String name;
-    private Double rating;
-    private String description;
+    private String genre;
     private String platform;
 
     @OneToMany(mappedBy = "game")

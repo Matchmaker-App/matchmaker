@@ -16,6 +16,7 @@ public class GameController {
         this.gameService = gameService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/games")
     public @ResponseBody
     ResponseEntity<List<Game>> getGame(@PathVariable(required = false, name="gameId") Long id,

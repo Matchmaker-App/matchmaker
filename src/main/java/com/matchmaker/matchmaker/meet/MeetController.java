@@ -13,16 +13,19 @@ public class MeetController {
     //service injection
     private final MeetServiceImplementation meetServiceImplementation;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/")
-    public List<Meet> getMeets() {
+    public List<MeetDTO> getMeets() {
         return meetServiceImplementation.getMeets();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/{id}")
     public Meet getMeet(@PathVariable(name = "id") Long id) throws Exception {
         return meetServiceImplementation.getMeetById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/")
     public void postMeet(@RequestBody Meet meetRequest,@RequestParam Long userId,@RequestParam Long gameId) throws Exception {
         meetServiceImplementation.createMeet(meetRequest,userId,gameId);

@@ -1,0 +1,50 @@
+
+
+.wholepage{
+    font-family:  'Orbitron';
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+.adminpage-box{
+    font-family:  'Orbitron';
+    margin-top: -5px;
+    box-shadow: 5px 5px 5px 5px #2b2354;
+    border-radius: 13px;
+    background-color: #586ae6;
+    text-align: center;
+    height: 40px;
+    width: 90%;
+    color: #2b2354;
+    font-size: 20px;
+
+}
+
+.title{
+    
+    font-family:  'Orbitron';
+    font-size: 20px;
+}
+
+.adminpage-textfield{
+    display: flex;
+    flex-direction: column;
+    border-radius: 13px;
+
+    font-family:  'Orbitron';
+    background-color: #586ae6;
+    box-shadow: 5px 5px 5px 5px #2b2354;
+}
+
+
+.datagrid{
+    border-radius: 13px;
+    height: 35px;
+    background-color: #586ae6;
+    box-shadow: 5px 5px 5px 5px #2b2354;
+    font-family:  'Orbitron';
+}
+
+.adminpage-textfield-1{
+    font-family:  'Orbitron';
+}

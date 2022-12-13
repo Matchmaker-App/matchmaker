@@ -30,7 +30,7 @@ public class GameController {
         Game game = gameService.getGameById(id);
         return new ResponseEntity(game, HttpStatus.OK);
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/games/addGame")
     public ResponseEntity addGame(@RequestBody Game game){
         gameService.addGame(game);

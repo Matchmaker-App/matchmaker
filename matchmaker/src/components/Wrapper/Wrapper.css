@@ -13,9 +13,9 @@
     padding: 0 30px;
     
     background-color: #586ae6;
-    box-shadow: 5px 5px 5px #2b2354;
+    box-shadow: 5px 5px 5px 5px #2b2354;
     border-radius: 13px;
-    height: 40px;
+    height: 55px;
     width: 95%;
     position: fixed;
     top: 20px;
@@ -32,7 +32,7 @@
 .nav-menu{
     display: grid;
     grid-template-columns: repeat(4,auto);
-    grid-gap: 40px;
+    grid-gap: 60px;
     list-style: none;
     align-items: center;
     text-align: center;
@@ -52,3 +52,10 @@
 .wrapper-mainarea{
     margin-top: 80px;
 }
+
+.smaller-logo{
+
+    height: 5%;
+    width: 5%;
+    
+  }

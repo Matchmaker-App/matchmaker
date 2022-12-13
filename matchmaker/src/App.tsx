@@ -12,8 +12,9 @@ import { GameResponse } from './models/GameResponse';
 import { MeetsPage } from './components/MainPage/MeetsPage';
 import { Game } from './models/game/Game';
 import { AdminPage } from './components/AdminPage/AdminPage';
-import { ErrorPage } from './components/ErrorPage/ErrorPage';
 
+import error from './404.png'
+import { UserPage } from './components/UserPage/UserPage';
 
 
 //define context
@@ -74,6 +75,15 @@ function App() {
     name:"",
   })
 
+  function PageNotFound() {
+    return (
+      <div>
+        <img src={error} alt="Logo" className="logo" />
+      </div>
+    );
+
+  }
+
   const [game, setGame] = useState<Game>({
    
     name: "",
@@ -108,6 +118,7 @@ function App() {
         gameResponseDataModifier: gameResponseDataModifier,
       }}
     >
+      
       <BrowserRouter>
    <Routes>
     <Route path ="/" element={<Wrapper />}>
@@ -116,14 +127,22 @@ function App() {
     <Route path="/LoginPage" element={<LoginPage/>}></Route>
     <Route path="/AdminPage" element={<AdminPage/>}></Route>
     <Route path="/AboutPage" element={<AboutPage/>}></Route>
-    <Route path="/ErrorPage" element={<ErrorPage/>}></Route>
+    <Route path="/UserPage" element={<UserPage/>}></Route>
     <Route path="/MeetFormPage" element={<MeetFormPage/>}></Route>  
     <Route path="/MeetsPage" element={<MeetsPage/>}></Route>  
+
+    <Route path="*" element={<PageNotFound />} />
       </Route>
    </Routes>
+
    </BrowserRouter>
+   
    </DataContext.Provider>
+   
   );
+
+    
+
 }
 
 export default App;

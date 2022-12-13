@@ -4,6 +4,7 @@ import {HiInformationCircle} from 'react-icons/hi'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {RiGameFill} from 'react-icons/ri'
 import { Link, Outlet } from "react-router-dom";
+import logo from "./logo.svg"
 
 export const Wrapper = () => {
     return (
@@ -11,19 +12,19 @@ export const Wrapper = () => {
      <div className="wrapper-container">
     <nav className="wrapper-navbar-items">
         
-        <h1 className="wrapper-title"><RiGameFill/> Matchmaker</h1>
+        <h1 className="wrapper-title"><img src={logo} className="smaller-logo" alt="logo"/> Matchmaker</h1>
         <ul className="nav-menu">
             <li>
-                <Link to="/" className="nav-menu-link">Home <FaGamepad className="wrapper-icons"/></Link>
+                <Link to="/" className="nav-menu-link">Home  <FaGamepad className="wrapper-icons"/></Link>
             </li>
             <li>
-            <Link to="/AboutPage" className="nav-menu-link">About <HiInformationCircle className="wrapper-icons"/></Link>
+            <Link to="/AboutPage" className="nav-menu-link">About  <HiInformationCircle className="wrapper-icons"/></Link>
             </li>
             <li>
-            <Link to="/ErrorPage" className="nav-menu-link">AdminPanel <HiInformationCircle className="wrapper-icons"/></Link>
+            <Link to="/AdminPage" className="nav-menu-link">AdminPanel  <HiInformationCircle className="wrapper-icons"/></Link>
             </li>
             <li>
-            <h2 className="nav-menu-item">User <GiHamburgerMenu className="wrapper-icons"/></h2>
+            <Link to="/ErrorPage" className="nav-menu-link">User <GiHamburgerMenu className="wrapper-icons"/></Link>
             </li>
             
         </ul>

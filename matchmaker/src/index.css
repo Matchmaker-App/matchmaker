@@ -8,7 +8,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url("matchmakerBackground.png");
   background-position: center;
+  background-attachment: fixed;
   background-size: cover;
+  
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
